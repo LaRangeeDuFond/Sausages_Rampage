@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Poele
+  m_Shader: {fileID: 4800000, guid: 71655858f4728e947a7a9afd6e5fd7bb, type: 3}
+  m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+      data:
+        first:
+          name: _MainTex
+        second:
+          m_Texture: {fileID: 2800000, guid: 06cc391f3922a5e48ba35e2d6a8d7e59, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BumpMap
+        second:
+          m_Texture: {fileID: 2800000, guid: ba80743a63a95024a976bd683de6f8c2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Cube
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BRDF
+        second:
+          m_Texture: {fileID: 2800000, guid: 2a46d803b94a2a64dbf110995c5d40a2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Detail
+        second:
+          m_Texture: {fileID: 2800000, guid: 5bfa0d6506b90924eb7e6168d90b60a6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Reflections
+        second:
+          m_Texture: {fileID: 8900000, guid: e6e9ff61f45a84c418f4e61cf067a0e8, type: 2}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RoughnessMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 5bfa0d6506b90924eb7e6168d90b60a6, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _SpecularMap
+        second:
+          m_Texture: {fileID: 2800000, guid: 2a46d803b94a2a64dbf110995c5d40a2, type: 3}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+    m_Floats:
+      data:
+        first:
+          name: _Shininess
+        second: .370686889
+      data:
+        first:
+          name: _SpecularPower
+        second: 100.785721
+      data:
+        first:
+          name: _Roughness
+        second: .310535729
+    m_Colors:
+      data:
+        first:
+          name: _Color
+        second: {r: .904411793, g: .904411793, b: .904411793, a: 1}
+      data:
+        first:
+          name: _SpecColor
+        second: {r: .139705896, g: .0877625048, b: .0595804527, a: 1}
+      data:
+        first:
+          name: _ReflectColor
+        second: {r: 1, g: 1, b: 1, a: .5}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: 1, g: .924746454, b: .897058845, a: 0}
