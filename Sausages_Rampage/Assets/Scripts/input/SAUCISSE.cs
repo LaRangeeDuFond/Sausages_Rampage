@@ -22,104 +22,111 @@ public class SAUCISSE : MonoBehaviour
 		bool isUp;
 		float ZRot = 0f;
 
-		void Update ()
+	void Update ()
+	{
+
+		//Savoir si la saucisse repose sur le sol
+
+		if (Physics.Raycast (transform.position, Vector3.down, GroundDetectionLength)) 
 		{
-
-				//Savoir si la saucisse repose sur le sol
-
-
-
-				if (Physics.Raycast (transform.position, Vector3.down, GroundDetectionLength)) {
-						isGrounded = true;
-				} else {
-						isGrounded = false;
-				}
-
-				// Pour faire Bouger		
-				DirX = Input.GetAxis ("Horizontal");
-				DirZ = Input.GetAxis ("Vertical");
-
-				JumpDirection = new Vector3 (DirX, 1f, DirZ);
-
-				if (networkView.isMine) {
-
-						if (Input.GetKey (jump) && isGrounded) {
-								if (isUp) {
-										if (JumpForce <= JumpForceClampWhenUp) {
-												JumpForce += JumpForceIncrementation * Time.deltaTime;
-										}
-								} else {
-										if (JumpForce <= JumpForceClamp) {
-												JumpForce += JumpForceIncrementation * Time.deltaTime;
-										}
-								}
-
-
-						}
-
-						if (Input.GetKeyUp (jump)) {
-								rigidbody.AddForce (JumpDirection * JumpForce);
-								JumpForce = 0f;
-						}
-
-						//METTRE LA SAUCISSE DEBOUT
-
-						//Savoir quand elle atterit
-						if (Input.GetKeyUp (Up)) {
-								isLanding = true;
-						} else {
-								if (isGrounded) {
-										isLanding = false;
-								}
-						}
-
-						//Pour qu'elle bondisse lorsqu'elle se redresse
-						if (Input.GetKeyDown (Up) && isGrounded) {
-
-								rigidbody .AddForce (Vector3.up * RotationJump);
-				
-						}
-
-						//Le mouvement de Rotation
-
-
-						if (Input.GetKey (Up) && !isLanding) {
-
-								if (ZRot < 90f) {
-										ZRot += RotationSpeedUp * Time.deltaTime;
-								} else {
-										ZRot = 90f;
-										isUp = true;
-								}
-						} else {
-								if (ZRot > 0f) {
-										ZRot -= RotationSpeedDown * Time.deltaTime;
-								} else {
-										ZRot = 0f;
-										isUp = false;
-								}
-						}
-
-						transform.eulerAngles = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, ZRot);
-
-		
-				}
-
-
-
-
-
+				isGrounded = true;
+		} 
+		else 
+		{
+				isGrounded = false;
 		}
 
-		void OnSerializeNetworkView (BitStream stream, NetworkMessageInfo info)
+		// Pour faire Bouger		
+		DirX = Input.GetAxis ("Horizontal");
+		DirZ = Input.GetAxis ("Vertical");
+
+		JumpDirection = new Vector3 (DirX, 1f, DirZ);
+
+		if (networkView.isMine)
 		{
-				Vector3 syncPosition = Vector3.zero;
-				if (stream.isWriting) {
-						syncPosition = rigidbody.position;
-						stream.Serialize (ref syncPosition);
-				} else {
-						stream.Serialize (ref syncPosition);
-						rigidbody.position = syncPosition;
+			if (Input.GetKey (jump) && isGrounded) 
+			{
+				if (isUp) 
+				{
+					if (JumpForce <= JumpForceClampWhenUp) 
+					{
+						JumpForce += JumpForceIncrementation * Time.deltaTime;
+					}
+				} 
+				else 
+				{
+					if (JumpForce <= JumpForceClamp) 
+					{
+						JumpForce += JumpForceIncrementation * Time.deltaTime;
+					}
 				}
+			}
+			if (Input.GetKeyUp (jump)) 
+			{
+				rigidbody.AddForce (JumpDirection * JumpForce);
+				JumpForce = 0f;
+			}
+
+			//METTRE LA SAUCISSE DEBOUT
+
+			//Savoir quand elle atterit
+			if (Input.GetKeyUp (Up)) 
+			{
+				isLanding = true;
+			} 
+			else 
+			{
+				if (isGrounded)
+				{
+					isLanding = false;
+				}
+			}
+
+			//Pour qu'elle bondisse lorsqu'elle se redresse
+			if (Input.GetKeyDown (Up) && isGrounded) {
+
+					rigidbody .AddForce (Vector3.up * RotationJump);
+
+			}
+			//Le mouvement de Rotation
+			if (Input.GetKey (Up) && !isLanding) 
+			{
+				if (ZRot < 90f) 
+				{
+					ZRot += RotationSpeedUp * Time.deltaTime;
+				} 
+				else 
+				{
+					ZRot = 90f;
+					isUp = true;
+				}
+			} 
+			else 
+			{
+				if (ZRot > 0f) 
+				{
+					ZRot -= RotationSpeedDown * Time.deltaTime;
+				} 
+				else 
+				{
+					ZRot = 0f;
+					isUp = false;
+				}
+			}
+
+			transform.eulerAngles = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, ZRot);
 		}
+	}
+
+	void OnSerializeNetworkView (BitStream stream, NetworkMessageInfo info)
+	{
+			Vector3 syncPosition = Vector3.zero;
+			if (stream.isWriting) {
+					syncPosition = rigidbody.position;
+					stream.Serialize (ref syncPosition);
+			} else {
+					stream.Serialize (ref syncPosition);
+					rigidbody.position = syncPosition;
+			}
+	}
 }
