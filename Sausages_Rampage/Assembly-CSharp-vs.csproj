@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\input\SAUCISSE.cs" />
      <None Include="Assets\Materiaux\Shaders\Glass.shader" />
      <None Include="Assets\Materiaux\Shaders\Glass2.shader" />
+     <None Include="Assets\Materiaux\Shaders\Metal.shader" />
      <None Include="Assets\Materiaux\Shaders\BRDF(1).shader" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
