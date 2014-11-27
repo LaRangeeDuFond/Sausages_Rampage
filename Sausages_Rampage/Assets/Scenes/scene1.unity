@@ -808,7 +808,7 @@ ParticleSystem:
         m_PostInfinity: 2
       minMaxState: 0
     z:
-      scalar: 0
+      scalar: -.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1637,6 +1637,10 @@ Prefab:
     - target: {fileID: 19800000, guid: 1032f9e0894aec84dab97898cbab3799, type: 2}
       propertyPath: VelocityModule.y.scalar
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 1032f9e0894aec84dab97898cbab3799, type: 2}
+      propertyPath: VelocityModule.z.scalar
+      value: -.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1032f9e0894aec84dab97898cbab3799, type: 2}
